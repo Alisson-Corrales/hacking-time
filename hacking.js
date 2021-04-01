@@ -2035,6 +2035,7 @@ for(let row in rules){
 }
 //this counts how many times a letter appears in a password
 for(let row in rules){
+    //grabs the elements in rules
     let values = rules[row];
     //grabs numbers from the first column
     let maxLetter = values[0];
@@ -2042,7 +2043,18 @@ for(let row in rules){
     let minletter = values[1];
     //grabs the letters from the third column
     let letterRule = values[2];
-    //console.log(minletter)
+    let amount = 0;
+
+    for(let i in passwords){
+            if(passwords[i] == letterRule){
+                amount++
+                if(amount >= minletter || amount <= maxLetter){
+                    totalPasswords++
+                }else{
+                    totalPasswords += 0;
+                }
+        }
+    }
 }
 
 //grab password in row
@@ -2052,7 +2064,7 @@ for(let row in rules){
 
 //console.table(toBeName(passwords))
 //console.table(rules)
-//console.log(`There are ${totalPasswords} valid passwords`)
+console.log(`There are ${totalPasswords} valid passwords`)
 
 
 
