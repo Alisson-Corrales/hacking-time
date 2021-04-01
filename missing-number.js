@@ -1,17 +1,27 @@
 "use strict";
 
 
-/*let numbers = []
+let numbers = []
 
+//this generates a array of 1-100 numbers (in order)
 for(let i = 1; i <= 100; i++){
     numbers.push(i)
 }
-
+//peoblem here
+//this gets rid of a number (deletes it entirely)
 for(let i in numbers){
-    numbers.push(i)
-}*/
+    //generates a random number between 1-100
+    let randoNum = Math.floor(Math.random() * (100 - 1) + 1)
+    //if the random number is
+    if(randoNum == numbers[i]){
+        numbers[i] -= num
+    }
+    return numbers[i]
+}
 
-let numbers = ['1', '2', '4', '5']
+
+console.log(numbers)
+
 
 function haveYouSeenMe(array){
     //n becomes the last number of the array
@@ -21,15 +31,18 @@ function haveYouSeenMe(array){
     let sum = 0;
     
     //goes over every element in the array
-    for(let i in array){
+    for(let i = 0; i < array.length; i++){
         sum += array[i];
     }
     return total - sum
+    
 }
 
-//goes through the array and counts up(?)
-//breaks when a number is missing
+console.log(haveYouSeenMe(numbers));
 
-console.table(haveYouSeenMe(numbers));
+//let finalAnswer = (haveYouSeenMe(numbers))
 
-//took very close notes from https://medium.com/@briandsalemi/how-to-solving-the-missing-number-question-33b0426a9ba5
+
+//console.log(`the missing number is ${numbers}`)
+
+//took *very* close notes from https://medium.com/@briandsalemi/how-to-solving-the-missing-number-question-33b0426a9ba5

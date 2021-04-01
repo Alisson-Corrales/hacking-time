@@ -20,5 +20,5 @@ function replaceDuplicates(){
     }
     return RandoNums
 }
-console.table(RandoNums)
+
 console.table(replaceDuplicates(RandoNums));

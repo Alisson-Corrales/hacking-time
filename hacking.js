@@ -2024,11 +2024,6 @@ let rows = 0;
 
 //will be used to say if a password is valid or not
 let valid = true;
-//this loops to split the letters by ''
-/*for(let row in passwords){
-    passwords = passwords[row].split('').join(' ')
-    return passwords
-}*/
 //this seperates the rules into seperate columns
 for(let row in rules){
     rules[row] = rules[row].split('-').join(' ').split(' ');
