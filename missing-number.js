@@ -7,42 +7,35 @@ let numbers = []
 for(let i = 1; i <= 100; i++){
     numbers.push(i)
 }
-//peoblem here
+
 //this gets rid of a number (deletes it entirely)
-for(let i in numbers){
-    //generates a random number between 1-100
-    let randoNum = Math.floor(Math.random() * (100 - 1) + 1)
-    //if the random number is
-    if(randoNum == numbers[i]){
-        numbers[i] -= num
-    }
-    return numbers[i]
-}
+//generates a random number between 1-100
+let randoNum = Math.floor(Math.random() * (100 - 1) + 1)
+console.log(randoNum + 1)
+//takes out the random number and only the random number
+numbers.splice(randoNum, 1);
 
 
-console.log(numbers)
-
-
+//finds the missing number in the array by adding all of the numbers in the array and then subtracting that by the sum of 1-100
 function haveYouSeenMe(array){
-    //n becomes the last number of the array
-    let n = array.length + 1;
-    //add from 1 to the last number of the array (thank you Carl Friedich Gauss)
-    let total = (n*(n + 1))/2;
+    //n becomes the last number of the array, added +1 because the array is missing a number (the one we took out)
+    let n = array.length + 1;  // 100
+    //this adds 1-100 (so its 1 + 2 + 3...)
+    let total = (n*(n + 1))/2;  // 5050, in this case
+    //total sum of the array
     let sum = 0;
     
-    //goes over every element in the array
+    //goes over every element in the array, not by index
     for(let i = 0; i < array.length; i++){
-        sum += array[i];
+        //this adds the elements in the array to sum, except the missing number
+        sum += array[i]; //5050 - the missing number
     }
-    return total - sum
-    
+
+    return total - sum // 5050 - (5050 - missing number)
 }
 
-console.log(haveYouSeenMe(numbers));
+let finalAnswer = (haveYouSeenMe(numbers));
 
-//let finalAnswer = (haveYouSeenMe(numbers))
+console.log(`the missing number is ${finalAnswer}`)
 
-
-//console.log(`the missing number is ${numbers}`)
-
-//took *very* close notes from https://medium.com/@briandsalemi/how-to-solving-the-missing-number-question-33b0426a9ba5
+//based from https://medium.com/@briandsalemi/how-to-solving-the-missing-number-question-33b0426a9ba5
