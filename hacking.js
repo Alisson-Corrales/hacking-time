@@ -2007,6 +2007,17 @@ dddtpdd`
 rules = rules.split('\n')
 passwords = passwords.split('\n')
 
+//this seperates the rules into seperate columns
+for (let row in rules) {
+    rules[row] = rules[row].split('-').join(' ').split(' ');
+}
+
+let totalPasswords = 0;
+let columns = 0;
+let rows = 0;
+
+//will be used to say if a password is valid or not
+let valid = 0;
 
 
 //problem 1
@@ -2018,49 +2029,55 @@ passwords = passwords.split('\n')
 //Code Hints:
 //I did the whole thing with splits, arrays, and for loops
 
-let totalPasswords = 0;
-let columns = 0;
-let rows = 0;
 
-//will be used to say if a password is valid or not
-let valid = true;
-//this seperates the rules into seperate columns
-for(let row in rules){
-    rules[row] = rules[row].split('-').join(' ').split(' ');
-}
+/*
 //this counts how many times a letter appears in a password
-for(let row in rules){
+for (let row in rules) {
     //grabs the elements in rules
     let values = rules[row];
     //grabs numbers from the first column
-    let maxLetter = values[0];
+    let minletter = values[0];
     //grabs numbers from the second column
-    let minletter = values[1];
+    let maxLetter = values[1];
     //grabs the letters from the third column
     let letterRule = values[2];
+    let currentPassword = passwords[row]
     let amount = 0;
-
-    for(let i in passwords){
-            if(passwords[i] == letterRule){
-                amount++
-                if(amount >= minletter || amount <= maxLetter){
-                    totalPasswords++
-                }else{
-                    totalPasswords += 0;
-                }
+    //loops through the passwords
+    for (let i in currentPassword) {
+        if (currentPassword[i] == letterRule) {
+            amount++
         }
     }
+    //console.log(`amount ${amount}, min ${minletter}, max ${maxLetter}`);
+    if (amount >= minletter && amount <= maxLetter) {
+        valid++
+    }
 }
+*/
 
 //grab password in row
 //grab min max and letter in row
 //if letters appear in passsword enough times valid + 1
 
 
-//console.table(toBeName(passwords))
-//console.table(rules)
-console.log(`There are ${totalPasswords} valid passwords`)
-
 
 
 //problem 2
+//WHOOPS, you misunderstood the password creation protocol, that is not the number of letters that need to be in the password, it’s the position that the letters need to be. The password needs EXACTLY 1 of the 2 positions to be that letter. For example 
+//1 - 7 a: abcdefghi   is valid because there is an ‘a’ in the 1 position and not in the seventh position
+//1 - 3 b: abcde is not valid because there is no ‘b’ in the first or third position
+//2 - 9 c: cccccccccc   is not valid because there is a ‘c’ in BOTH positions
+//Find the new amount of valid passwords with the new rule 
+//Code Hints: 
+//Notice that the number is not an index so you will need to reduce the number by 1 to make it an index for your password array
+
+for (let row in rules){
+    let values = rules[row];
+    let position1 = values[0];
+    let position2 = values[1];
+    let letter = values[2]; 
+    console.table(rules)
+}
+
+//console.log(`There are ${valid} valid passwords`)
